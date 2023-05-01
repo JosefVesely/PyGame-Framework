@@ -5,6 +5,7 @@ import sys
 from states.Menu import Menu
 from states.MainGame import MainGame
 from states.GameOver import GameOver
+from states.GUIWidgets import GUIWidgets
 
 class Game:
     def __init__(self):
@@ -31,6 +32,7 @@ class Game:
         # Game state
         self.states = {
             "MENU": Menu(),
+            "WIDGETS": GUIWidgets(),
             "MAINGAME": MainGame(),
             "GAMEOVER": GameOver(),
         }
@@ -71,6 +73,8 @@ class Game:
 
             self.state.done = False
             self.state = self.states[next_state]
+            pg.mouse.set_cursor(pg.SYSTEM_CURSOR_ARROW)
+
 
         self.state.update(self.dt)
 
